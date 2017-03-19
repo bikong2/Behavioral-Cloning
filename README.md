@@ -34,25 +34,13 @@ The model.py file contains the code for training and saving the convolution neur
 
 #### 1. An appropriate model architecture has been employed
 
-My model is borrowed from the [Nvidia paper](https://arxiv.org/pdf/1604.07316.pdf) (model.py lines 53-65).
+My model is borrowed from the [Nvidia paper](https://arxiv.org/pdf/1604.07316.pdf) (model.py lines 53-65). It consists of a convolution neural network with three 5x5 filter sizes and depths of 24, 36, 48 each with downsample 2. Two CNN layers with 3x3 filter sizes and depths of 64 are followed. Finally, the input is flatten and mapped to three fully connected layers with 100, 50 and 10 neurons.
 
-It consists of a convolution neural network with three 5x5 filter sizes and depths of 24, 36, 48 each with downsample 2.
-
-Two CNN layers with 3x3 filter sizes and depths of 64 are followed.
-
-Finally, the input is flatten and mapped to three fully connected layers with 100, 50 and 10 neurons .
-
-The model includes the cropping of the images (code line 55), five RELU layers to introduce nonlinearity (code line 56-60),
-
-and the data is normalized in the model using a Keras lambda layer (code line 54).
+The model includes the cropping of the images (code line 55), five RELU layers to introduce nonlinearity (code line 56-60), and the data is normalized in the model using a Keras lambda layer (code line 54).
 
 #### 2. Attempts to reduce overfitting in the model
 
-The model doesn’t contains dropout layers.
-
-However, the model was trained and validated on different data sets to ensure that the model was not overfitting (code line 69).
-
-The model was tested by running it through the simulator and ensuring that the vehicle could stay on the track.
+The model doesn’t contains dropout layers. However, the model was trained and validated on different data sets to ensure that the model was not overfitting (code line 69). The model was tested by running it through the simulator and ensuring that the vehicle could stay on the track.
 
 #### 3. Model parameter tuning
 
@@ -60,39 +48,19 @@ The model used an adam optimizer, so the learning rate was not tuned manually (m
 
 #### 4. Appropriate training data
 
-Training data was chosen to keep the vehicle driving on the road. I used a combination of center driving, a few recovery laps and driving counter-clockwise.
-
-Nice driving around the curves are always maintained during the training.
-
-For details about how I created the training data, see the next section.
+Training data was chosen to keep the vehicle driving on the road. I used a combination of center driving, a few recovery laps and driving counter-clockwise. Nice driving around the curves are always maintained during the training. For details about how I created the training data, see the next section.
 
 ### Model Architecture and Training Strategy
 
 #### 1. Solution Design Approach
 
-The overall strategy for deriving a model architecture was to build a somewhat complex network utilizing the AWS graphic resources.
+The overall strategy for deriving a model architecture was to build a somewhat complex network utilizing the AWS graphic resources. My first step was to use a convolution neural network model similar to the LeNet architecture. I thought this model might be appropriate because LeNet is the pioneering invention of CNN.
 
-My first step was to use a convolution neural network model similar to the LeNet architecture.
+In order to gauge how well the model was working, I split my image and steering angle data into a training and validation set. I found that my first model had a high mean squared error on the training set and a high mean squared error on the validation set. Therefore, the vehicle couldn’t stay on the track.
 
-I thought this model might be appropriate because LeNet is the pioneering invention of CNN.
+To improve the model, I borrowed the model from the Nvidia paper, which is more complex and required to use GPU to train. Then I got an MSE of 0.0197 in the first epoch and 0.0039 in the tenth epoch. The MSE of validation also improved a lot with 0.0271 in the first and 0.0252 in the last epoch.
 
-In order to gauge how well the model was working, I split my image and steering angle data into a training and validation set.
-
-I found that my first model had a high mean squared error on the training set and a high mean squared error on the validation set.
-
-Therefore, the vehicle couldn’t stay on the track.
-
-To improve the model, I borrowed the model from the Nvidia paper, which is more complex and required to use GPU to train.
-
-Then I got an MSE of 0.0197 in the first epoch and 0.0039 in the tenth epoch.
-
-The MSE of validation also improved a lot with 0.0271 in the first and 0.0252 in the last epoch.
-
-The final step was to run the simulator to see how well the car was driving around track one.
-
-Vehicle didn’t fall off the track at all, probably because of the recovery laps that I have recorded.
-
-At the end of the process, the vehicle is able to drive autonomously around the track without leaving the road.
+The final step was to run the simulator to see how well the car was driving around track one. Vehicle didn’t fall off the track at all, probably because of the recovery laps that I have recorded. At the end of the process, the vehicle is able to drive autonomously around the track without leaving the road.
 
 #### 2. Final Model Architecture
 
@@ -119,15 +87,9 @@ To augment the data sat, I also flipped images and angles thinking that this wou
 ![](./ex/flipped1.jpg)
 ![](./ex/flipped11.jpg)
 
-After the collection process, I had 14916 number of data points. I then preprocessed this data with normalization.
+After the collection process, I had 14916 number of data points. The data was then preprocessed with normalization and randomly shuffled. 2% of the data into a validation set.
 
-I finally randomly shuffled the data set and put 2% of the data into a validation set.
-
-I used this training data for training the model. The validation set helped determine if the model was over or under fitting.
-
-The ideal number of epochs was 10 as evidenced by the course video.
-
-I used an adam optimizer so that manually training the learning rate wasn't necessary.
+I used the training data for training the model. The validation set helped determine if the model was over or under fitting. The ideal number of epochs was 10. An adam optimizer was used so that manually training the learning rate wasn't necessary.
 
 Here is the result:
 
