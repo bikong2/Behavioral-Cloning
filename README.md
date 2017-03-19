@@ -95,4 +95,4 @@ I used the training data for training the model. The validation set helped deter
 
 Here is the result:
 
-<img src="./ex/result.jpg" width="500" />
+<img src="./ex/result.jpg" width="750" />
