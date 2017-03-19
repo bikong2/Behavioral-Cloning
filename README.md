@@ -68,26 +68,26 @@ The final step was to run the simulator to see how well the car was driving arou
 
 The final model architecture (model.py lines 53-65) consisted of a convolution neural network with the following layers and layer sizes in a visualization of the architecture
 
-![](./ex/cnn.jpg)
+<img src="./ex/cnn.jpg" width="500" />
 
 #### 3. Creation of the Training Set & Training Process
 
 To capture good driving behavior, I first recorded two laps on track both using center lane driving. Here is an example image of center lane driving:
 
-![](./ex/center.jpg)
+<img src="./ex/center.jpg" width="250" />
 
 I then recorded the vehicle recovering from the left side and right sides of the road back to center so that the vehicle would learn to steer away. These images show what a recovery looks like starting from these screenshots:
 
-![](./ex/recovery1.jpg)
-![](./ex/recovery2.jpg)
-![](./ex/recovery3.jpg)
+<img src="./ex/recovery1.jpg" width="250" />
+<img src="./ex/recovery2.jpg" width="250" />
+<img src="./ex/recovery3.jpg" width="250" />
 
 On track two, I only did center driving in order to get more data points.
 
 To augment the data sat, I also flipped images and angles thinking that this would increase the magnitude of dataset according to the Nvidia paper. For example, here is an image that has then been flipped:
 
-![](./ex/flipped1.jpg)
-![](./ex/flipped11.jpg)
+<img src="./ex/flipped1.jpg" width="250" />
+<img src="./ex/flipped11.jpg" width="250" />
 
 After the collection process, I had 14916 number of data points. The data was then preprocessed with normalization and randomly shuffled. 2% of the data into a validation set.
 
@@ -95,4 +95,4 @@ I used the training data for training the model. The validation set helped deter
 
 Here is the result:
 
-![](./ex/result.jpg)
+<img src="./ex/result.jpg" width="750" />
