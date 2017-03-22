@@ -23,8 +23,8 @@ python drive.py model.h5
 ```
 
 The model.py file contains the code for training and saving the convolution neural network. The file shows the pipeline I used for training and validating the model, and it contains comments to explain how the code works.
-
-### Model Architecture and Training Strategy
+---
+### Model Architecture Strategy
 
 #### 1. An appropriate model architecture has been employed
 
@@ -43,8 +43,8 @@ The model used an adam optimizer, so the learning rate was not tuned manually (m
 #### 4. Appropriate training data
 
 Training data was chosen to keep the vehicle driving on the road. I used a combination of center driving, a few recovery laps and driving counter-clockwise. Nice driving around the curves are always maintained during the training. For details about how I created the training data, see the next section.
-
-### Model Architecture and Training Strategy
+---
+### Model Training Strategy
 
 #### 1. Solution Design Approach
 
